@@ -1,0 +1,35 @@
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+
+<Servelt>
+<Servelt-name >dispatcher</Servelt-name>
+<Servelt-class>org.springframework.web.servelt.DispatcherServlet</Servelt-class>
+</Servelt>
+
+<sevelet-mapping> 
+<servelet-name>dispatcher</servelet-name>
+<url-pattern>/</url-pattern>
+</sevelet-mapping>
+
+<context-param>
+<param-name> contextConfigLoaction</param-name>
+<param-value> /WEB-INF/dispatcher-servlet.xml, /WEB-INF/SpringSecurity.xml</param-value>
+</context-param>
+
+<listener>
+<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+
+<filter>
+<filter-name>springSecurityFilterChain</filter-name>
+<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+</filter>
+
+<filter-mapping>
+<filter-name>springSecurityFilterChain </filter-name>
+<url-pattern>/*</url-pattern>
+</filter-mapping>
+
+</web-app>

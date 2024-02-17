@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:mcv="http://www.springframework.org/schema/mvc"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:xsi="http://w3.org/2001/XMLSchem-instance"
+             xmlns:tx="http://www.springframework.org/schema/tx"
+             xmlns:security="http://www.springframework.org/schema/security"
+             xmlns:schemaLocation="http://www.springframework.org/schema/beans
+             http://www.springframework.org/schema/beans/spring-beans.xsd
+             http://www.springframework.org/schema/mvc
+             http://www.springframework.org/schema/mvc/spring-mvc.xsd
+             http://www.springframework.org/schema/context
+             http://www.springframework.org/schema/context/spring-context.xsd  
+             http://www.springframework.org/schema/security
+             http://www.springframework.org/schema/security/spring-security.xsd   ">            
+              
+              
+              <security:http auto-config="true" use-expression="true">
+              <security:form-login login-page="/login" default-target-url="/" login-processing-url="/preform_login" 
+              authenticaation-failure-url="/Login" auhtentication-success-forward-url="/Login_success"/>
+              
+              <security:logout logout-success-url="/Login" logout-url="/preform_Logout" />
+              <security:csrf disabled="true"/>
+              </security:http>
+              
+              <security:authentication-manager>
+              
+                 <security:authentication-provider>
+              
+                   <security:jdbc-user-service data-source-ref="dataSource"
+                   user-by-username-query="select username,password,enabled form Userdetail where username=?"
+                   authorities-by-username-query="select username,role form Userdetail where username=?"  />
+                   
+             
+             
+             
+             
+             
+              
+                   </security:authentication-provider>
+              
+        
+              </security:authentication-manager>
+                  
+                  
+          
+             
+         </beans:beans>
